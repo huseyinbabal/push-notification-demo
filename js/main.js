@@ -72,6 +72,9 @@ function subscribe() {
                 //return sendSubscriptionToServer(subscription);
                 var endpoints = subscription.endpoint.split('/');
                 console.log(endpoints[endpoints.length - 1]);
+                var div = document.createElement('div');
+                div.innerHTML =  endpoints[endpoints.length - 1];
+                document.getElementsByTagName('body')[0].appendChild(div);
                 return true;
             })
             .catch(function(e) {
