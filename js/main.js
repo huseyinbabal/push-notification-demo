@@ -86,7 +86,11 @@ function subscribe() {
                 var div = document.createElement('div');
                 div.innerHTML =  endpoints[endpoints.length - 1];
                 document.getElementsByTagName('body')[0].appendChild(div);
-                jQuery.post("https://push-subscribe.herokuapp.com/subscriptions", JSON.stringify(subscription), function(data) {
+                jQuery.ajax({
+                    url: "https://push-subscribe.herokuapp.com/subscriptions",
+                    data: JSON.stringify(subscription),
+                    contentType: "application/json"
+                }, function(data) {
                     console.log("Subscription send result: ", data);
                 });
                 return true;
