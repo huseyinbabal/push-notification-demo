@@ -87,6 +87,7 @@ function subscribe() {
                 div.innerHTML =  endpoints[endpoints.length - 1];
                 document.getElementsByTagName('body')[0].appendChild(div);
                 jQuery.ajax({
+                    type: "POST",
                     url: "https://push-subscribe.herokuapp.com/subscriptions",
                     data: JSON.stringify(subscription),
                     contentType: "application/json"
