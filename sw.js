@@ -1,8 +1,10 @@
 self.addEventListener('push', function(event) {
     console.log('Received a push message', event);
 
-    var title = 'Urun fiyati dustu!';
-    var body = 'IPhon6 5TL\'ye dustu';
+    var pushData = JSON.parse(event.data.text());
+
+    var title = pushData.title;
+    var body = pushData.message;
     var icon = '/images/icon.png';
     var tag = 'kampanya';
 

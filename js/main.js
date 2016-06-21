@@ -17,6 +17,17 @@ window.addEventListener('load', function() {
     } else {
         console.warn('Service workers are not supported in this browser');
     }
+
+
+    navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
+        serviceWorkerRegistration.pushManager.getSubscription()
+            .then(function(subscription) {
+                console.log(JSON.stringify(subscription));
+            })
+            .catch(function(err) {
+                console.warn('Error during getSubscription()', err);
+            });
+    });
 });
 
 
@@ -75,6 +86,9 @@ function subscribe() {
                 var div = document.createElement('div');
                 div.innerHTML =  endpoints[endpoints.length - 1];
                 document.getElementsByTagName('body')[0].appendChild(div);
+                jQuery.post("http://push-subscribe.herokuapp.com/subscriptions", JSON.stringify(subscription), function(data) {
+                    console.log("Subscription send result: ", data);
+                });
                 return true;
             })
             .catch(function(e) {
