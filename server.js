@@ -17,10 +17,6 @@ app.get('/manifest.json', function(req, res){
     res.sendFile(__dirname + '/manifest.json');
 });
 
-app.get('/images/icon.png', function(req, res){
-    res.sendFile(__dirname + '/images/icon.png');
-});
-
 var port = process.env.PORT || 5000;
 
 app.listen(port, function(err) {

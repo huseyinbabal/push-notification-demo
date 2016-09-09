@@ -5,8 +5,8 @@ self.addEventListener('push', function(event) {
 
     var title = pushData.title;
     var body = pushData.message;
-    var icon = '/images/icon.png';
-    var tag = 'kampanya';
+    var icon = '';
+    var tag = 'campaign';
 
     event.waitUntil(
         self.registration.showNotification(title, {
